@@ -25,7 +25,7 @@ node {
    }                                     
    stage('docker build/push') {            
      docker.withRegistry('https://index.docker.io/v1/', 'Docker_Hub') {
-       def app = docker.build("shreesat/docker-nodejs-demo-shree:${commit_id}", '.').push()
+       def app = docker.build("shreesat/dockernodejsdemo:${commit_id}", '.').push()
      }                                     
    }                                       
 }                                          
