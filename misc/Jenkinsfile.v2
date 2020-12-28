@@ -1,12 +1,12 @@
 node {
-   set commit_id
+   def commit_id
    stage('Preparation') {
      checkout scm
      bat "git rev-parse --short HEAD > .git/commit-id"
      commit_id = readFile('.git/commit-id').trim()
    }
    stage('test') {
-     set myTestContainer = docker.image('node:4.6')
+     def myTestContainer = docker.image('node:4.6')
      myTestContainer.pull()
      myTestContainer.inside {
        sh 'npm install --only=dev'
